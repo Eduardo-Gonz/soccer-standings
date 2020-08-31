@@ -4,21 +4,17 @@
 
 .container-fluid {
   padding: 3% 10%;
-  color:
 }
 
-.league-name {
+.table-head {
   font-family: "Open Sans", sans-serif;
   font-weight: 800;
   font-size: 2.5rem;
+  margin-bottom: 3%;
 }
 
 .league-table {
   padding-top: 3%;
-}
-
-.top-scorer {
-  text-align: center;
 }
 
 /* Navbar */
@@ -68,13 +64,81 @@
   margin-top: -14%;
 }
 
-/* Premier League Section */
+/* Standings Section */
+#Standings{
+  width: 100%;
+  padding-top: 3%;
+  background-color: #d2fafb;
+}
 
+.container {
+  text-align: center;
+}
 
-@media (max-width: 857px) {
+.league-name {
+  display: inline;
+  margin: 4%;
+  font-family: 'Open Sans', sans-serif;
+  color: #003366;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.league-name:hover{
+  color: #51dacf;
+  cursor: pointer;
+}
+
+.short-text {
+  display: none;
+}
+
+.table thead th{
+  border-color: #003366;
+}
+
+.table-bordered td, .table-bordered th{
+  border-color: #003366;
+  border-width: 3px;
+}
+
+.top-scorer {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
 
   .soccer-img {
     display: none;
   }
 
+  .league-name {
+    font-size: 1rem;
+    margin: 2%;
+  }
+
 }
+
+@media (max-width: 563px) {
+
+  .short-text{
+    display: inline;
+  }
+
+  .long-text{
+    display: none;
+  }
+
+  .league-name.short-text {
+    margin: 1%;
+    font-size: 14px;
+  }
+  .name {
+    width: 25%;
+  }
+
+}
+
+/* @media (max-width: 320px){
+
+} */
