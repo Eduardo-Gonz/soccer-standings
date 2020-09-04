@@ -106,6 +106,10 @@
   text-align: center;
 }
 
+.removable {
+  display: none;
+}
+
 @media (max-width: 768px) {
 
   .soccer-img {
