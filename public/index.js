@@ -1,4 +1,5 @@
 
+//Assigns onclick event listeners to the 5 different league p tags in index.html.
 const assignBtns = () => {
 
   const premierLeague = document.querySelector(".premier-btn");
@@ -6,40 +7,47 @@ const assignBtns = () => {
   const bundesliga = document.querySelector(".bundesliga-btn");
   const seriaA = document.querySelector(".seria-btn");
   const ligue1 = document.querySelector(".ligue-btn");
+  let leagueName = "";
 
+//optimizable
   premierLeague.addEventListener("click", () => {
     const premId = 2790;
+    leagueName = "Premier League";
     console.log("clicked");
-    callApi(premId);
+    callApi(premId, leagueName);
   });
 
   laLiga.addEventListener("click", () => {
     const ligaId = 2833;
+    leagueName = "La Liga";
     console.log("clicked");
-    callApi(ligaId);
+    callApi(ligaId, leagueName);
   });
 
   bundesliga.addEventListener("click", () => {
     const bundesligaId = 2755;
+    leagueName = "Bundesliga";
     console.log("clicked");
-    callApi(bundesligaId);
+    callApi(bundesligaId, leagueName);
   });
 
   seriaA.addEventListener("click", () => {
     const seriaId = 2857;
+    leagueName = "Seria A";
     console.log("clicked");
-    callApi(seriaId);
+    callApi(seriaId, leagueName);
   });
 
   ligue1.addEventListener("click", () => {
     const ligueId = 2664;
-    console.log("clicked");
-    callApi(ligueId);
+    leagueName = "Ligue 1";
+    callApi(ligueId, leagueName);
   });
 }
 
 
-const callApi = (leagueId) => {
+//Function that calls the api using the leagues unique ID.
+const callApi = (leagueId, leagueName) => {
   fetch("https://api-football-v1.p.rapidapi.com/v2/leagueTable/" + leagueId, {
   	"method": "GET",
   	"headers": {
@@ -51,22 +59,46 @@ const callApi = (leagueId) => {
   .then(data => {
     let standings = data.api.standings;
     console.log(data);
-    populateData(standings);
+    populateData(standings, leagueName);
 
   })
-
   .catch(err => {
   	console.log(err);
   });
 }
 
-const populateData = (standings) => {
-console.log(standings[0]);
-  for(let i = 0; i < standings[0].length; i++) {
+  //Removes elements to accomodate number of teams from a league. The default number is 20.
+const hidePositions = (numOfTeams) => {
+
+  const removablePositions = document.querySelectorAll('.removable');
+  console.log(removablePositions);
+
+  if(numOfTeams > 18){
+    removablePositions.forEach( (element) => {
+      if(element.classList.contains("remove-on")){
+        element.classList.remove("remove-on");
+      }
+    });
+  }
+  else{
+    removablePositions.forEach( (element) => {
+      element.classList.add("remove-on")
+    });
+  }
+}
+
+//Populates table with data retrieved from the api call.
+const populateData = (standings, leagueName) => {
+  const numoOfTeams = standings[0].length;
+  hidePositions(numoOfTeams);
+
+  document.querySelector(".table-header").innerHTML = leagueName;
+
+  for(let i = 0; i < numoOfTeams; i++) {
     document.querySelector(".teamName-" + i).innerHTML = standings[0][i].teamName;
     document.querySelector(".goalsFor-" + i).innerHTML = standings[0][i].all.goalsFor;
     document.querySelector(".goalsAgainst-" + i).innerHTML = standings[0][i].all.goalsAgainst;
-    document.querySelector(".pts-" + i).innerHTML = standings[0][i].points
+    document.querySelector(".pts-" + i).innerHTML = standings[0][i].points;
   }
 
 }
