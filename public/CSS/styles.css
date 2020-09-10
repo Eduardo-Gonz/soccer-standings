@@ -102,11 +102,15 @@
   border-width: 3px;
 }
 
-.top-scorer {
-  text-align: center;
+.logo-img {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .remove-on {
+  display: none;
+}
+.table-sm {
   display: none;
 }
 
@@ -137,12 +141,18 @@
     margin: 1%;
     font-size: 14px;
   }
+
   .name {
     width: 25%;
   }
 
-}
+  .table-mobile th,
+  .table-mobile td {
+    padding: 0.3rem;
+  }
 
-/* @media (max-width: 320px){
+}
+/*
+@media (max-width: 375px){
 
 } */

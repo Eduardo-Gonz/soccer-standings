@@ -57,7 +57,7 @@ const callApi = (leagueId, leagueName) => {
   })
   .then(response => response.json() )
   .then(data => {
-    let standings = data.api.standings;
+    let standings = data.api.standings[0];
     console.log(data);
     populateData(standings, leagueName);
 
@@ -89,16 +89,20 @@ const hidePositions = (numOfTeams) => {
 
 //Populates table with data retrieved from the api call.
 const populateData = (standings, leagueName) => {
-  const numoOfTeams = standings[0].length;
+  
+  const numoOfTeams = standings.length;
   hidePositions(numoOfTeams);
 
   document.querySelector(".table-header").innerHTML = leagueName;
 
   for(let i = 0; i < numoOfTeams; i++) {
-    document.querySelector(".teamName-" + i).innerHTML = standings[0][i].teamName;
-    document.querySelector(".goalsFor-" + i).innerHTML = standings[0][i].all.goalsFor;
-    document.querySelector(".goalsAgainst-" + i).innerHTML = standings[0][i].all.goalsAgainst;
-    document.querySelector(".pts-" + i).innerHTML = standings[0][i].points;
+    document.querySelector(".team-logo-" + i).src = standings[i].logo;
+    document.querySelector(".teamName-" + i).innerHTML = standings[i].teamName;
+    document.querySelector(".short-teamName-" + i).innerHTML = standings[i].teamName.slice(0,3);
+    document.querySelector(".matchesPlayed-" + i).innerHTML = standings[i].all.matchsPlayed;
+    document.querySelector(".goalsFor-" + i).innerHTML = standings[i].all.goalsFor;
+    document.querySelector(".goalsAgainst-" + i).innerHTML = standings[i].all.goalsAgainst;
+    document.querySelector(".pts-" + i).innerHTML = standings[i].points;
   }
 
 }
