@@ -89,7 +89,8 @@ const hidePositions = (numOfTeams) => {
 
 //Populates table with data retrieved from the api call.
 const populateData = (standings, leagueName) => {
-  
+
+  //hide certain positions based on amount of teams in league.
   const numoOfTeams = standings.length;
   hidePositions(numoOfTeams);
 
