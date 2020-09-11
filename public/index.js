@@ -8,6 +8,13 @@ const assignBtns = () => {
   const seriaA = document.querySelector(".seria-btn");
   const ligue1 = document.querySelector(".ligue-btn");
   let leagueName = "";
+  // const options = document.querySelector(".league-options");
+  //
+  // options.addEventListener("click", () => {
+  //   if(event.target.matches(".ligue-btn")){
+  //     console.log("hello");
+  //   }
+  // })
 
 //optimizable
   premierLeague.addEventListener("click", () => {

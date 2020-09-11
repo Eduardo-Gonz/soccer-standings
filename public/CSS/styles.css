@@ -1,9 +1,10 @@
+/* Layout of the Site */
 #header{
-  background-color: #51dacf;
+  background-color: #ffffff;
 }
 
 .container-fluid {
-  padding: 3% 10%;
+  padding: 3% 15%;
 }
 
 .table-header {
@@ -22,35 +23,18 @@
   padding: 0 0 4.5rem;
 }
 
-.navbar-scrolled {
-  background-color: white;
-}
-
 .navbar-brand {
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
-  font-size: 2rem;
-  color: #003366;
-}
-
-.navbar-nav {
-  font-family: "Open Sans", sans-serif;
-  font-size: 1.2rem;
-}
-.nav-link {
-  color: #003366;
-}
-
-.fa-bars{
+  font-size: 3.5rem;
   color: #003366;
 }
 
 /* Header Section */
-
 .header-title {
   font-family: "Open Sans", sans-serif;
-  font-weight: 700;
-  line-height: 1.2em;
+  font-weight: 400;
+  line-height: 1.5em;
   font-size: 3.5rem;
   color: #003366;
 }
@@ -59,16 +43,17 @@
   text-align: right;
 }
 
-.soccer-img {
-  width: 75%;
-  margin-top: -14%;
+.table-img {
+  height: 70%;
+  width: 80%;
+  padding-top: 1%;
 }
 
 /* Standings Section */
 #Standings{
   width: 100%;
   padding-top: 3%;
-  background-color: #d2fafb;
+  background-color: #ecfcff;
 }
 
 .container {
@@ -93,14 +78,18 @@
   display: none;
 }
 
-.table thead th{
-  border-color: #003366;
-}
-
-.table-bordered td, .table-bordered th{
-  border-color: #003366;
+ .table thead th{
   border-width: 3px;
 }
+
+.table td, .table th {
+  border-width: 2px;
+}
+
+/* .table thead th{
+  border-color: #003366;
+  border-width: 2px;
+} */
 
 .logo-img {
   width: 1.5rem;
@@ -110,24 +99,26 @@
 .remove-on {
   display: none;
 }
-.table-sm {
-  display: none;
-}
 
 @media (max-width: 768px) {
-
-  .soccer-img {
-    display: none;
-  }
 
   .league-name {
     font-size: 1rem;
     margin: 2%;
   }
+  .navbar-brand {
+    font-size: 1.5rem;
+  }
+  .header-title {
+    font-size: 2rem;
+  }
 
 }
 
 @media (max-width: 563px) {
+  .table-img {
+    display: none;
+  }
 
   .short-text{
     display: inline;
@@ -138,12 +129,12 @@
   }
 
   .league-name.short-text {
-    margin: 1%;
-    font-size: 14px;
+    margin: .5%;
+    font-size: 12px;
   }
 
-  .name {
-    width: 25%;
+  td .short-text {
+    font-size: 12px;
   }
 
   .table-mobile th,
@@ -152,7 +143,3 @@
   }
 
 }
-/*
-@media (max-width: 375px){
-
-} */
