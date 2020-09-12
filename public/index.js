@@ -121,4 +121,9 @@ const populateData = (standings, leagueName) => {
 
 }
 
+window.addEventListener("load", () => {
+  const league = createLeagueInfo();
+  callApi(league.premier.leagueId, league.premier.leagueName);
+});
+
 executeChoice();
