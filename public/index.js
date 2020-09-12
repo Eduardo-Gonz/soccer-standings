@@ -1,4 +1,5 @@
 
+// Returns an object that stores all league info necessary for API calls.
 const createLeagueInfo = () => {
 
 const leagueInfo = {
@@ -28,7 +29,8 @@ const leagueInfo = {
   return leagueInfo;
 }
 
-const executeChoice = () => {
+// Adds functionality to all the league buttons on HTML file
+const addFunctionality = () => {
 
   const leagues = createLeagueInfo();
 
@@ -80,7 +82,7 @@ const callApi = (leagueId, leagueName) => {
   });
 }
 
-  //Removes elements to accomodate number of teams from a league. The default number is 20.
+//Removes elements to accomodate number of teams from a league. The default number is 20.
 const hidePositions = (numOfTeams) => {
 
   const removablePositions = document.querySelectorAll('.removable');
@@ -126,4 +128,4 @@ window.addEventListener("load", () => {
   callApi(league.premier.leagueId, league.premier.leagueName);
 });
 
-executeChoice();
+addFunctionality();

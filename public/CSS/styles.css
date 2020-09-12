@@ -95,6 +95,8 @@
   display: none;
 }
 
+
+/* Media Breakpoints */
 @media (max-width: 768px) {
 
   .league-name {

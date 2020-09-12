@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express ();
 
-let footballData = "data";
 
 app.use(express.static("public"));
 
