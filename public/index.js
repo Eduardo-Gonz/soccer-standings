@@ -1,54 +1,60 @@
 
-//Assigns onclick event listeners to the 5 different league p tags in index.html.
-const assignBtns = () => {
+const createLeagueInfo = () => {
 
-  const premierLeague = document.querySelector(".premier-btn");
-  const laLiga = document.querySelector(".liga-btn");
-  const bundesliga = document.querySelector(".bundesliga-btn");
-  const seriaA = document.querySelector(".seria-btn");
-  const ligue1 = document.querySelector(".ligue-btn");
-  let leagueName = "";
-  // const options = document.querySelector(".league-options");
-  //
-  // options.addEventListener("click", () => {
-  //   if(event.target.matches(".ligue-btn")){
-  //     console.log("hello");
-  //   }
-  // })
+const leagueInfo = {
 
-//optimizable
-  premierLeague.addEventListener("click", () => {
-    const premId = 2790;
-    leagueName = "Premier League";
-    console.log("clicked");
-    callApi(premId, leagueName);
-  });
+    premier:  {
+          leagueName: "Premier League",
+          leagueId: 2790
+    },
+    laLiga: {
+          leagueName: "La Liga",
+          leagueId: 2833
+    },
+    bundesliga: {
+          leagueName: "Bundesliga",
+          leagueId: 2755
+    },
+    serieA: {
+          leagueName: "Seria A",
+          leagueId: 2857
+    },
+    ligue1: {
+          leagueName: "Ligue 1",
+          leagueId: 2664
+    }
+  };
 
-  laLiga.addEventListener("click", () => {
-    const ligaId = 2833;
-    leagueName = "La Liga";
-    console.log("clicked");
-    callApi(ligaId, leagueName);
-  });
+  return leagueInfo;
+}
 
-  bundesliga.addEventListener("click", () => {
-    const bundesligaId = 2755;
-    leagueName = "Bundesliga";
-    console.log("clicked");
-    callApi(bundesligaId, leagueName);
-  });
+const executeChoice = () => {
 
-  seriaA.addEventListener("click", () => {
-    const seriaId = 2857;
-    leagueName = "Seria A";
-    console.log("clicked");
-    callApi(seriaId, leagueName);
-  });
+  const leagues = createLeagueInfo();
 
-  ligue1.addEventListener("click", () => {
-    const ligueId = 2664;
-    leagueName = "Ligue 1";
-    callApi(ligueId, leagueName);
+  const leagueOptions = document.querySelector(".league-options");
+
+  leagueOptions.addEventListener("click", () => {
+    const userOption = event.target.classList;
+    switch ( true ) {
+      case userOption.contains('premier-btn'):
+        callApi(leagues.premier.leagueId, leagues.premier.leagueName);
+        break;
+      case userOption.contains('liga-btn'):
+        callApi(leagues.laLiga.leagueId, leagues.laLiga.leagueName);
+        break;
+      case userOption.contains('bundesliga-btn'):
+        callApi(leagues.bundesliga.leagueId, leagues.bundesliga.leagueName);
+        break;
+      case userOption.contains('serie-btn'):
+        callApi(leagues.serieA.leagueId, leagues.serieA.leagueName);
+        break;
+      case userOption.contains('ligue-btn'):
+        callApi(leagues.ligue1.leagueId, leagues.ligue1.leagueName);
+        break;
+      default:
+        alert("Sorry, this option is not currently available!");
+    };
   });
 }
 
@@ -115,4 +121,4 @@ const populateData = (standings, leagueName) => {
 
 }
 
-assignBtns();
+executeChoice();
